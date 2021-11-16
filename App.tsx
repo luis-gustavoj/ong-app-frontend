@@ -7,6 +7,7 @@ import Home from "./src/pages/Home";
 import Login from "./src/pages/Login";
 import RegisterOng from "./src/pages/RegisterOng";
 import RegisterUser from "./src/pages/RegisterUser";
+import OwnerOngs from "./src/pages/OwnerOngs";
 
 import { RootStackParamList } from "./types";
 import Ongs from "./src/pages/Ongs";
@@ -30,6 +31,7 @@ export default function App() {
           <Stack.Screen name="RegisterOng" component={RegisterOng} />
           <Stack.Screen name="RegisterUser" component={RegisterUser} />
           <Stack.Screen name="Ongs" component={Ongs} />
+          <Stack.Screen name="OwnerOngs" component={OwnerOngs} />
         </Stack.Navigator>
       </AuthContextProvider>
     </NavigationContainer>

@@ -37,7 +37,7 @@ export const CardContainer = styled.View`
   padding: 8px;
   display: flex;
   flex-direction: row;
-  background-color: #ccc;
+  background-color: #e6e6e6;
   border-radius: 8px;
   margin-bottom: 12px;
 `;

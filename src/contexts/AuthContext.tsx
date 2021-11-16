@@ -4,7 +4,12 @@ import { UserType } from "../../types";
 
 type AuthContextType = {
   token: string;
-  loginUser: (userToken: string, username: string, userType: string) => void;
+  loginUser: (
+    userToken: string,
+    username: string,
+    userType: string,
+    userId: string
+  ) => void;
   logoutUser: () => void;
   user: UserType | undefined;
 };
@@ -22,11 +27,13 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const handleLogin = (
     userToken: string,
     username: string,
-    userType: string
+    userType: string,
+    userId: string
   ) => {
     const newUser = {
       username: username,
       userType: userType,
+      id: userId,
     };
 
     setUser(newUser);

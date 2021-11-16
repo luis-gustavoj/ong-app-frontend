@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import {Alert} from 'react-native';
 import { Button } from "../../components/Button";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -30,18 +31,37 @@ export default function LoginUser({ navigation }: ScreenProps) {
   }, [navigation]);
 
   const handleLoginUser = async () => {
-    const { data } = await api.post("/login", {
+    try {
+      const { data } = await api.post("/login", {
       email: email,
       password: password,
     });
 
-    if (data) {
-      const userToken = data.token;
-      const username = data.user.username;
-      const userType = data.user.usertype;
+      if (data) {
+        const userToken = data.token;
+        const username = data.user.username;
+        const userType = data.user.usertype;
+        const userId = data.user.id;
 
-      loginUser(userToken, username, userType);
-      navigation.navigate("Menu");
+        loginUser(userToken, username, userType, userId);
+        navigation.navigate("Menu");
+      }
+    } catch {
+      Alert.alert(
+        "Aviso",
+        "Usuário ou senha inválidos",
+        [
+          {
+            text: "Ok",
+            onPress: () => {},
+            style: "cancel",
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () => {},
+        }
+      );
     }
   };
 
@@ -49,7 +69,6 @@ export default function LoginUser({ navigation }: ScreenProps) {
     <Container>
       <TextContainer>
         <Title>Então vamos fazer seu login!</Title>
-        <SubText>É bem rapidinho, eu prometo!</SubText>
       </TextContainer>
       <InputsContainer>
         <Input

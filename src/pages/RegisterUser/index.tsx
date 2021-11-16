@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Alert } from "react-native";
 
 import { ScreenProps } from "../../../types";
 import { Button } from "../../components/Button";
@@ -26,21 +27,61 @@ export default function RegisterOng({ navigation }: ScreenProps) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegisterUser = async () => {
-    await api
-      .post("/users", {
-        username: name + " " + lastName,
-        email: email,
-        password: password,
-        usertype: userType,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error.message);
-      });
+    if (password != confirmPassword) {
+      Alert.alert(
+        "Aviso",
+        "As senhas não conferem",
+        [
+          {
+            text: "Ok",
+            onPress: () => {},
+            style: "cancel",
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () => {},
+        }
+      );
+    } else if (
+      name === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      confirmPassword === ""
+    ) {
+      Alert.alert(
+        "Aviso",
+        "Por favor, preencha todos os campos!",
+        [
+          {
+            text: "Ok",
+            onPress: () => {},
+            style: "cancel",
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () => {},
+        }
+      );
+    } else {
+      await api
+        .post("/users", {
+          username: name + " " + lastName,
+          email: email,
+          password: password,
+          usertype: userType,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
 
-    navigation.navigate("Login");
+      navigation.navigate("Login");
+    }
   };
 
   return (
