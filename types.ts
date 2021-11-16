@@ -8,6 +8,7 @@ export type RootStackParamList = {
   RegisterOng: undefined;
   RegisterUser: undefined;
   Ongs: undefined;
+  OwnerOngs: undefined;
 };
 
 export type UserType = {

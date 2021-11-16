@@ -36,7 +36,7 @@ export const CardContainer = styled.View`
   width: 100%;
   padding: 8px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: #e6e6e6;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -47,4 +47,39 @@ export const InfoContainer = styled.View`
   display: flex;
   align-items: flex-start;
   margin-right: auto;
+`;
+
+export const UpperContainer = styled.View`
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  margin-bottom: 12px;
+`;
+
+export const ButtonsContainer = styled.View`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const EditButton = styled.TouchableOpacity`
+  width: 49%;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background-color: #38a1ff;
+  border-radius: 8px;
+`;
+
+export const DeleteButton = styled.TouchableOpacity`
+  width: 49%;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border: 1px solid #b80f0a;
+  border-radius: 8px;
 `;

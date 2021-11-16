@@ -20,6 +20,7 @@ export const SubText = styled.Text`
 `;
 
 export const Image = styled.Image`
+  height: 59px;
   align-self: center;
   margin-bottom: 24px;
 `;
